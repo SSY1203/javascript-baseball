@@ -19,12 +19,8 @@ class BaseballGame {
     OutputView.printStart();
     this.computerNumbers = computer.setComputerNumbers();
     this.playerNumbers = Validation.userNumbersIsValid(InputView.getUserNumbers());
-    // console.log(this.computerNumbers);
+    console.log(this.playerNumbers);
     this.getPlayer(this.playerNumbers);
-  }
-
-  getPlayer(numbers) {
-    console.log(numbers);
   }
 }
 

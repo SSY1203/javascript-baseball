@@ -2,16 +2,19 @@ const { Console, PLZ_NUMBER_INPUT, GAME_RESTART } = require('../Constant');
 
 const InputView = {
   getUserNumbers() {
+    let userNumbers;
     Console.readLine(PLZ_NUMBER_INPUT, numbers => {
-      console.log(numbers.split(''));
-      return numbers.split('');
+      userNumbers = numbers.split('');
     });
+    return userNumbers;
   },
 
   getRestartOrEndStatus() {
+    let result;
     Console.readLine(GAME_RESTART, answer => {
-      return answer;
+      result = answer;
     });
+    return result;
   },
 };
 
