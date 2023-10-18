@@ -7,13 +7,25 @@ class Player {
     this.score = { ball: 0, strike: 0 };
   }
 
-  setScore(score) {
-    this.score = score;
+  increaseBall() {
+    this.score.ball += 1;
+  }
+
+  increaseStrike() {
+    this.score.strike += 1;
   }
 
   resetPlayer() {
     this.playerNumbers = [];
     this.score = { ball: 0, strike: 0 };
+  }
+
+  setPlayerNumbers(numbers) {
+    this.playerNumbers = numbers;
+  }
+
+  setScore(score) {
+    this.score = score;
   }
 }
 

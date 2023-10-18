@@ -1,20 +1,21 @@
 const { ERROR_TEXT, THREE } = require('../Constant');
+const Player = require('../Model/Player');
+const playerModel = new Player();
 
 const Validation = {
   userNumbersIsValid(numbers) {
+    const number = Number(numbers.join(''));
     const repeatInput = [...new Set(numbers)];
-    console.log(numbers);
     if (
       numbers &&
-      (numbers < 0 ||
+      (number < 0 ||
         numbers.includes(0) ||
-        isNaN(numbers) ||
-        String(numbers).length !== THREE ||
+        isNaN(number) ||
+        String(number).length !== THREE ||
         repeatInput.length !== THREE)
     ) {
       throw ERROR_TEXT;
     }
-    return numbers;
   },
 };
 

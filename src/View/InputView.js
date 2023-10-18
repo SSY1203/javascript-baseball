@@ -1,12 +1,14 @@
 const { Console, PLZ_NUMBER_INPUT, GAME_RESTART } = require('../Constant');
+const Player = require('../Model/Player');
+const playerModel = new Player();
 
 const InputView = {
-  getUserNumbers() {
-    let userNumbers;
+  getPlayerNumbers() {
+    let input;
     Console.readLine(PLZ_NUMBER_INPUT, numbers => {
-      userNumbers = numbers.split('');
+      input = numbers.split('');
     });
-    return userNumbers;
+    return input;
   },
 
   getRestartOrEndStatus() {

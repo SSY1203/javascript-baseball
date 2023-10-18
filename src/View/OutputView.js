@@ -6,13 +6,19 @@ const OutputView = {
   },
 
   printScore(score) {
-    const scoreTxt = '';
-    if (score.ball !== 0) {
-      scoreTxt += `${score.ball}볼 `;
+    let scoreTxt = '';
+    if (score) {
+      if (score.ball === 0 && score.strike === 0) {
+        scoreTxt = '낫싱';
+      }
+      if (score.ball > 0) {
+        scoreTxt += `${score.ball}볼 `;
+      }
+      if (score.strike > 0) {
+        scoreTxt += `${score.strike}스트라이크`;
+      }
     }
-    if (score.strike !== 0) {
-      scoreTxt += `${score.strike}스트라이크`;
-    }
+
     Console.print(scoreTxt);
   },
 

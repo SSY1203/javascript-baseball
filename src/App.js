@@ -8,7 +8,6 @@ const OutputView = require('./View/OutputView');
 class App {
   play() {
     game.start();
-    // console.log(computerNumbers.resetComputerNumbers());
   }
 }
 

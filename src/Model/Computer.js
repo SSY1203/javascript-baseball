@@ -14,7 +14,6 @@ class Computer {
         this.computerNumbers.push(number);
       }
     }
-    return this.computerNumbers;
   }
 
   resetComputerNumbers() {

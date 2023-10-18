@@ -1,26 +1,69 @@
 const Computer = require('../Model/Computer');
-const computer = new Computer();
+const computerModel = new Computer();
+
 const Player = require('../Model/Player');
-const player = new Player();
+const playerModel = new Player();
+
 const InputView = require('../View/InputView');
 const OutputView = require('../View/OutputView');
+
 const Validation = require('../Service/Validation');
+const Compare = require('../Service/Compare');
+
+const { Console } = require('../Constant');
 
 class BaseballGame {
-  computerNumbers;
-  playerNumbers;
-
-  constructor() {
-    this.computerNumbers = [];
-    this.playerNumbers = [];
-  }
-
   start() {
     OutputView.printStart();
-    this.computerNumbers = computer.setComputerNumbers();
-    this.playerNumbers = Validation.userNumbersIsValid(InputView.getUserNumbers());
-    console.log(this.playerNumbers);
-    this.getPlayer(this.playerNumbers);
+    computerModel.setComputerNumbers();
+    this.readPlayerNumbers();
+  }
+
+  readPlayerNumbers() {
+    playerModel.setPlayerNumbers(InputView.getPlayerNumbers());
+    Validation.userNumbersIsValid(playerModel.playerNumbers);
+    this.compare();
+  }
+
+  compare() {
+    const score =
+      playerModel.playerNumbers &&
+      Compare.compareNumbers(computerModel.computerNumbers, playerModel.playerNumbers);
+    playerModel.setScore(score);
+
+    OutputView.printScore(playerModel.score);
+
+    if (playerModel.score.strike !== 3) {
+      this.fail();
+    } else {
+      this.success();
+    }
+  }
+
+  success() {
+    OutputView.printEnd();
+    playerModel.resetPlayer();
+    const result = InputView.getRestartOrEndStatus();
+    if (Number(result) === 1) {
+      this.retry();
+    }
+    if (Number(result) === 2) {
+      this.end();
+    }
+  }
+
+  fail() {
+    this.readPlayerNumbers();
+  }
+
+  retry() {
+    computerModel.resetComputerNumbers();
+    playerModel.resetPlayer();
+    this.start();
+  }
+
+  end() {
+    Console.close();
   }
 }
 
