@@ -1,13 +1,14 @@
+const BaseballGame = require('./Controller/BaseballGame');
+const game = new BaseballGame();
+const Computer = require('./Model/Computer');
+const computerNumbers = new Computer();
 const InputView = require('./View/InputView');
 const OutputView = require('./View/OutputView');
+
 class App {
   play() {
-    this.gameStart();
-  }
-
-  gameStart() {
-    OutputView.printStart();
-    InputView.getUserNumbers();
+    game.start();
+    // console.log(computerNumbers.resetComputerNumbers());
   }
 }
 

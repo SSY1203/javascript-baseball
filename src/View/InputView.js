@@ -1,12 +1,16 @@
-const { Console, PLZ_NUMBER_INPUT } = require('../Constant');
-const BaseballGame = require('../BaseballGame');
-const game = new BaseballGame();
+const { Console, PLZ_NUMBER_INPUT, GAME_RESTART } = require('../Constant');
 
 const InputView = {
   getUserNumbers() {
     Console.readLine(PLZ_NUMBER_INPUT, numbers => {
-      const userNumbers = numbers.split('');
-      game.setUserNumber(userNumbers);
+      console.log(numbers.split(''));
+      return numbers.split('');
+    });
+  },
+
+  getRestartOrEndStatus() {
+    Console.readLine(GAME_RESTART, answer => {
+      return answer;
     });
   },
 };
