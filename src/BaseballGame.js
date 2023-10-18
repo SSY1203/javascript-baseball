@@ -1,15 +1,22 @@
 const ComputerUser = require('./ComputerUser');
+const InputView = require('./View/InputView');
+const OutputView = require('./View/OutputView');
 
 class BaseballGame {
-  #computerNumber;
+  #computerNumbers;
+  #userNumbers;
 
   constructor() {
-    this.#computerNumber = [];
+    this.#computerNumbers = [];
+    this.#userNumbers = [];
   }
 
   start() {
-    this.#computerNumber = ComputerUser.setComputerNumber();
-    console.log(this.#computerNumber);
+    this.#computerNumbers = ComputerUser.setComputerNumber();
+  }
+
+  setUserNumber(numbers) {
+    this.#userNumbers = numbers;
   }
 }
 

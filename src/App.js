@@ -1,8 +1,13 @@
-const BaseballGame = require('./BaseballGame');
-const game = new BaseballGame();
+const InputView = require('./View/InputView');
+const OutputView = require('./View/OutputView');
 class App {
   play() {
-    game.start();
+    this.gameStart();
+  }
+
+  gameStart() {
+    OutputView.printStart();
+    InputView.getUserNumbers();
   }
 }
 
